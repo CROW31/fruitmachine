@@ -1,0 +1,56 @@
+import os
+import time
+import requests
+
+
+clear = lambda: os.system('clear')
+
+clear()
+print("╭──────────────•◈•──────────────╮")
+print(" [+] Welcome to H1V3'S Tool! [+] ")
+print("╰──────────────•◈•──────────────╯\n")
+while True:
+  user = input(" Enter username: ")
+  pwd = input(" Enter your passwor: ")
+
+  if(user == "a" and pwd == "a"):
+    print ("\n [+] welcome [+] \n")
+    break
+
+  else:
+
+    print(" sorry wrong username or password ")
+    time.sleep(0.5)
+    clear()
+    print("╭──────────────•◈•──────────────╮")
+    print(" [+] Welcome to H1V3'S Tool! [+] ")
+    print("╰──────────────•◈•──────────────╯\n")
+
+clear()
+
+while True:
+    web = input(" [+] Enter a website you want to check [+] ")
+
+    ok = 'https://'
+    ok1 = 'http://'
+
+    x = web.startswith((ok))
+    x1 = web.startswith((ok1))
+
+    if (x == True or x1 == True):
+        try:
+            r = requests.get(web)
+            r.headers   
+            print(" ", r)
+            print (" ", r.headers)
+            print("\n Removing from screen in 5 seconds! \n")
+            time.sleep(5)
+            clear()
+        except:
+            print("\n  Enter valid URL")
+            time.sleep(1)
+            clear()
+    else:
+        print("  Error enter a valid URL ")
+        time.sleep(1)
+        clear()
