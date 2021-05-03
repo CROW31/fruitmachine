@@ -3,20 +3,33 @@ import time
 import requests
 import sys
 import hashlib
+import getpass
 from getkey import getkey, keys
+import stdiomask
 
+clear = lambda: os.system("clear")
 
-clear = lambda: os.system('clear')
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 clear()
-print("╭──────────────•◈•──────────────╮")
-print(" [+] Welcome to H1V3'S Tool! [+] ")
-print("╰──────────────•◈•──────────────╯\n")
+#its the on
+print("\033[93m:╭──────────────•◈•──────────────╮")
+print("\033[93m: [+] Welcome to H1V3'S Tool! [+] ")
+print("\033[93m:╰──────────────•◈•──────────────╯\n")
 while True:
-  user = input(" Enter username: ")
-  pwd = input(" Enter your passwor: ")
+  user = input(" 🔐》》》 Enter username > ")
+  pwd = stdiomask.getpass(" 🔐》》》 Enter your password > ")
 
-  if(user == "a" and pwd == "a"):
+  if(user == "xyz.ll" and pwd == "8899x"):
     print ("\n [+] welcome [+] \n")
     break
 
@@ -34,9 +47,9 @@ print("╭──────────────•◈•──────�
 print(" [+] Welcome to H1V3'S Tool! [+] ")
 print("╰──────────────•◈•──────────────╯\n")
 
-print("  [+] H1V3'S MULTI PY TOOL [+]\n")
-print("  root@H1V3$ Website get req: F4")
-print("  root@H1V3$ MD5 pass crack: F5\n")
+print("\033[1;91m:  [+] H1V3'S MULTI PY TOOL [+]\n")
+print("\033[1;91m:  root@H1V3$ Website get req: F4")
+print("\033[1;91m:  root@H1V3$ MD5 pass crack: F5\n")
 key = getkey()
 if key == keys.F4:
     while True:
@@ -54,17 +67,17 @@ if key == keys.F4:
                 r.headers   
                 print(" ", r)
                 print (" ", r.headers)
-                print("\n Removing from screen in 5 seconds! \n")
+                print("\033[1;91m:\n Removing from screen in 5 seconds! \n")
                 time.sleep(5)
                 clear()
                 
             except:
-                print("\n  Enter valid URL")
+                print("\024[1;91m:\n  Enter valid URL")
                 time.sleep(1)
                 clear()
                 
         else:
-            print("  Error enter a valid URL ")
+            print("\032[1;91m:  Error enter a valid URL ")
             time.sleep(1)
             clear()
 
@@ -159,26 +172,31 @@ if key == keys.F5:
     sys.stdout.flush()
 
 while True:
-    pass_hash = input("\n\nEnter md5 hash: ")
-
-    wordlist = input("File name: ")
-
     try:
-        pass_file = open (wordlist, "r")
+        pass_hash = input("\n\nEnter md5 hash: ")
+
+        wordlist = input("File name: ")
+
+        try:
+            pass_file = open (wordlist, "r")
+        except:
+            print("No file found")
+            quit()
+
+        for word in pass_file:
+
+            enc_wrd = word.encode('utf-8')
+            digest = hashlib.md5(enc_wrd.strip()).hexdigest()
+
+            if digest == pass_hash:
+                print("Password found")
+                print("password is " + word)
+                flag = 1
+                break
+
+        if flag == 0:
+            print("password is not in the list try again :) //")
     except:
-        print("No file found")
-        quit()
-
-    for word in pass_file:
-
-        enc_wrd = word.encode('utf-8')
-        digest = hashlib.md5(enc_wrd.strip()).hexdigest()
-
-        if digest == pass_hash:
-            print("Password found")
-            print("password is " + word)
-            flag = 1
-            break
-
-    if flag == 0:
-        print("password is not in the list try again :) //")
+        print("  [+] Error! [+]  ")
+        break
+        clear()
