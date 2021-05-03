@@ -1,0 +1,184 @@
+import os
+import time
+import requests
+import sys
+import hashlib
+from getkey import getkey, keys
+
+
+clear = lambda: os.system('clear')
+
+clear()
+print("╭──────────────•◈•──────────────╮")
+print(" [+] Welcome to H1V3'S Tool! [+] ")
+print("╰──────────────•◈•──────────────╯\n")
+while True:
+  user = input(" Enter username: ")
+  pwd = input(" Enter your passwor: ")
+
+  if(user == "a" and pwd == "a"):
+    print ("\n [+] welcome [+] \n")
+    break
+
+  else:
+
+    print(" sorry wrong username or password ")
+    time.sleep(0.5)
+    clear()
+    print("╭──────────────•◈•──────────────╮")
+    print(" [+] Welcome to H1V3'S Tool! [+] ")
+    print("╰──────────────•◈•──────────────╯\n")
+
+clear()
+print("╭──────────────•◈•──────────────╮")
+print(" [+] Welcome to H1V3'S Tool! [+] ")
+print("╰──────────────•◈•──────────────╯\n")
+
+print("  [+] H1V3'S MULTI PY TOOL [+]\n")
+print("  root@H1V3$ Website get req: F4")
+print("  root@H1V3$ MD5 pass crack: F5\n")
+key = getkey()
+if key == keys.F4:
+    while True:
+        web = input(" [+] Enter a website you want to check [+] ")
+
+        ok = 'https://'
+        ok1 = 'http://'
+
+        x = web.startswith((ok))
+        x1 = web.startswith((ok1))
+
+        if (x == True or x1 == True):
+            try:
+                r = requests.get(web)
+                r.headers   
+                print(" ", r)
+                print (" ", r.headers)
+                print("\n Removing from screen in 5 seconds! \n")
+                time.sleep(5)
+                clear()
+                
+            except:
+                print("\n  Enter valid URL")
+                time.sleep(1)
+                clear()
+                
+        else:
+            print("  Error enter a valid URL ")
+            time.sleep(1)
+            clear()
+
+if key == keys.F5:
+    flag = 0
+    data = ["l","o","a","d","i","n","g"," ","t","o","o","l"]
+    for x in range(len(data)):
+
+
+        old = data[x]
+
+
+        data[x] = old.upper()
+
+
+        text = "".join(data)
+
+
+        sys.stdout.write("\r")
+        sys.stdout.write(text)
+        sys.stdout.flush()
+
+
+        data[x] = old
+
+        time.sleep(0.1)
+
+
+
+    text = "".join(data)
+
+    sys.stdout.write("\r")
+    sys.stdout.write(text)
+    sys.stdout.flush()
+
+    for x in range(len(data)):
+
+
+        old = data[x]
+
+
+        data[x] = old.upper()
+
+
+        text = "".join(data)
+
+
+        sys.stdout.write("\r")
+        sys.stdout.write(text)
+        sys.stdout.flush()
+
+
+        data[x] = old
+
+        time.sleep(0.1)
+
+
+
+    text = "".join(data)
+
+    sys.stdout.write("\r")
+    sys.stdout.write(text)
+    sys.stdout.flush()
+
+    for x in range(len(data)):
+
+
+        old = data[x]
+
+
+        data[x] = old.upper()
+
+
+        text = "".join(data)
+
+
+        sys.stdout.write("\r")
+        sys.stdout.write(text)
+        sys.stdout.flush()
+
+
+        data[x] = old
+
+        time.sleep(0.1)
+
+
+
+    text = "".join(data)
+
+    sys.stdout.write("\r")
+    sys.stdout.write(text)
+    sys.stdout.flush()
+
+while True:
+    pass_hash = input("\n\nEnter md5 hash: ")
+
+    wordlist = input("File name: ")
+
+    try:
+        pass_file = open (wordlist, "r")
+    except:
+        print("No file found")
+        quit()
+
+    for word in pass_file:
+
+        enc_wrd = word.encode('utf-8')
+        digest = hashlib.md5(enc_wrd.strip()).hexdigest()
+
+        if digest == pass_hash:
+            print("Password found")
+            print("password is " + word)
+            flag = 1
+            break
+
+    if flag == 0:
+        print("password is not in the list try again :) //")
