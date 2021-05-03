@@ -1,0 +1,106 @@
+import random as r
+import sys
+import os
+
+y = True
+os.system("clear")
+print("""                  ██████████████                  
+              ████████▒▒▒▒▒▒██▒▒████              
+          ████▒▒▒▒██▒▒██████▒▒▒▒▒▒▒▒████          
+        ██▒▒▒▒▒▒██▒▒▒▒██▒▒▒▒░░░░▒▒▒▒▒▒▒▒██        
+      ██▒▒▒▒▒▒██▒▒▒▒██▒▒░░░░░░░░░░░░▒▒▒▒▒▒██      
+    ██▒▒▒▒░░░░▒▒████▒▒░░░░░░░░░░░░░░░░░░▒▒▒▒██    
+    ██▒▒▒▒░░░░░░▒▒▒▒░░░░░░░░░░░░░░░░░░░░▒▒▒▒██    
+  ██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██  
+  ██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██  
+██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
+██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
+██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
+██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
+██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
+██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
+██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
+  ██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██  
+  ██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██  
+    ██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██    
+    ██▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██    
+      ██▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒██      
+        ██▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒██        
+          ████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████          
+              ████▒▒▒▒▒▒▒▒▒▒▒▒▒▒████              
+                  ██████████████ \n""")
+print("[+] Welcome to the fruit machine [+]\n")
+fruit = ["bell", "lemon", "Orange", "cherry", "star", "skull"]
+          
+money = 1
+
+while True:
+    yesno = input("DO you want to play (insert 0.20) y/n: ") #yes or no
+    money -= .2
+    if yesno == 'n':
+      print("BYE BYE")
+      exit()
+    if yesno == 'y':
+          
+        slot1 = (r.choice(fruit))
+        slot2 = (r.choice(fruit))
+        slot3 = (r.choice(fruit))
+        
+        if (money < .2):
+            print("\nYou do not have enough money! \n")
+            break
+    
+
+        if (slot1 == 5 and slot2 == 5 and slot3 == 5):
+            print("\nYou lost all your money\n")
+            money = 0
+            print(slot1, " ", slot2, " ", slot3)
+            print("\nYou have: ", money, "Creds!\n")
+
+        elif (slot1 == 4 and slot2 == 4 and slot3 == 4):
+            print("\nYou won 5.00 creds! \n")
+            money += 5
+            print(slot1, " ", slot2, " ", slot3)
+            print("\nYou have: ", money, "Creds!\n")
+        elif (slot1 == slot2 == slot3):
+            print("\nYou won 1.00 creds! \n")
+            money += 1
+            print(slot1, " ", slot2, " ", slot3)
+            print("\nYou have: ", money, "Creds!\n")
+        elif (slot1 == slot2):
+            print("\nYou won 0.50 creds! \n")
+            money += .5
+            print(slot1, " ", slot2, " ", slot3)
+            print("\nYou have: ", money, "Creds!\n")
+        elif (slot1 == slot3):
+            print("\nYou have won 0.50 creds! \n")
+            money += .5
+            print(slot1, " ", slot2, " ", slot3)
+            print("\nYou have: ", money, "Creds!\n")
+        elif (slot2 == slot3):
+            print("\nYou have won 0.50 creds! \n")
+            money += .5
+            print(slot1, " ", slot2, " ", slot3)
+            print("\nYou have: ", money, "Creds!\n")
+        elif (slot1 != slot2):
+            print("\n")
+            print(slot1, " ", slot2, " ", slot3, "\n")
+            print("\nYou dont win anything! \n")
+            print (money, "\n")
+        elif (slot1 != slot3):
+            print("\n")
+            print( slot1, " ", slot2, " ", slot3 )
+            print("You dont win anything! \n")
+            print (money, "\n")
+        elif (slot1 != slot2 != slot3):
+            print("\n")
+            print(slot1, " ", slot2, " ", slot3)
+            print("\nYou dont win anything! \n")
+            print (money, "\n")
+        
+    else:
+        continue
+
+
+
+# game rules: |3 skulls = - all money | 3 star's = +5.00 money | 2 of the same = 0.50 | 
